@@ -14,13 +14,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double value = 0.0;
+  double value = 1.5;
   void inc1() {
-    value = value + 0.1;
+    setState(() {
+      value = value + 0.1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+    
+  }
+
+  void inc2() {
+    setState(() {
+      value = value + 1.0;
+    });
+    
   }
 
   void dec1() {
-    value = value - 0.1;
+    setState(() {
+      value = value - 0.1;
+      value = double.parse(value.toStringAsFixed(1));
+    });
+    
+  }
+
+  void dec2() {
+    setState(() {
+      value = value - 1.0;
+    });
+    
+  }
+
+  void reset() {
+    setState(() {
+      value = 0.0;
+    });
+    
   }
 
   @override
@@ -34,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
         children: [
           IconButton(
-              onPressed: null, icon: Icon(Icons.refresh), key: Key('Refresh')),
+              onPressed: reset, icon: Icon(Icons.refresh), key: Key('Refresh')),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -44,7 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 dec1: dec1,
               ),
               W2(value: value),
-              W3(value: value)
+              W3(value: value,
+              inc2: inc2,
+              dec2: dec2,)
             ],
           ),
         ],

@@ -9,7 +9,7 @@ class W2 extends StatelessWidget {
       key: const Key('W2'),
       width: 200,
       height: 200,
-      color: Colors.blueGrey, // should be grey when the decimal is bellow 0.4
+      color: value - value.truncateToDouble()<0.4? Color.fromARGB(255, 212, 19, 84):const Color.fromARGB(255, 106, 255, 7), // should be grey when the decimal is bellow 0.4
     );
   }
 }
